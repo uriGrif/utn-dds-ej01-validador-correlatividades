@@ -9,25 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlumnoTest {
     @Test
     void puedeCursarTest() {
-        Materia algoritmos = new Materia("Algoritmos y Estructuras de Datos", new ArrayList<Materia>());
-        Materia am1 = new Materia("Analisis Matematico 1", new ArrayList<Materia>());
-        Materia aga = new Materia("Algebra y Geometria Analitica", new ArrayList<Materia>());
-        Materia pdp = new Materia("Paradigmas de Programacion", new ArrayList<Materia>(){{
-            add(algoritmos);
-        }});
-        Materia dds = new Materia("Disenio de Sistemas", new ArrayList<Materia>(){{
-            add(pdp);
-        }});
-        Materia am2 = new Materia("Disenio de Sistemas", new ArrayList<Materia>(){{
-            add(am1);
-            add(aga);
-        }});
+        Materia algoritmos = new Materia("Algoritmos y Estructuras de Datos");
+        Materia am1 = new Materia("Analisis Matematico 1");
+        Materia aga = new Materia("Algebra y Geometria Analitica");
+        Materia pdp = new Materia("Paradigmas de Programacion", algoritmos);
+        Materia dds = new Materia("Disenio de Sistemas", pdp);
+        Materia am2 = new Materia("am2", am1, aga);
 
-        ArrayList<Materia> materiasAprobadas = new ArrayList<>();
-        materiasAprobadas.add(algoritmos);
-        materiasAprobadas.add(am1);
-        materiasAprobadas.add(aga);
-        Alumno alumno = new Alumno("Uri 1", "2080199", materiasAprobadas);
+        Alumno alumno = new Alumno("Uri", "1234");
+        alumno.agregarMateriasAprobadas(algoritmos, am1, aga);
 
         assert(alumno.puedeCursar(am2));
         assert(!alumno.puedeCursar(dds));
