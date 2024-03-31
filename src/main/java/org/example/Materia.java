@@ -8,9 +8,12 @@ class Materia {
     private String nombre;
     private List<Materia> correlativas;
 
-    public Materia(String nombre, Materia ... correlativas) {
+    public Materia(String nombre) {
         this.nombre = nombre;
         this.correlativas = new ArrayList<Materia>();
+    }
+
+    public void agregarCorrelativas(Materia ... correlativas) {
         Collections.addAll(this.correlativas, correlativas);
     }
 

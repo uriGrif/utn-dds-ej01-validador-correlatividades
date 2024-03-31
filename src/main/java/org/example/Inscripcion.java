@@ -10,8 +10,10 @@ class Inscripcion {
 
     public Inscripcion(Alumno alumno, Materia ... materias) {
         this.alumno = alumno;
-
         this.materias = new ArrayList<Materia>();
+    }
+
+    public void agregarMaterias(Materia ... materias) {
         Collections.addAll(this.materias, materias);
     }
 
